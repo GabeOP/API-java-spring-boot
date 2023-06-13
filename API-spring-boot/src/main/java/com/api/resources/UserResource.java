@@ -1,6 +1,7 @@
 package com.api.resources;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -31,6 +32,12 @@ public class UserResource {
 	public ResponseEntity<List<User>> getAll(){
 		List<User> list = service.getAll();
 		return ResponseEntity.status(HttpStatus.OK).body(list);
+	}
+	
+	@GetMapping("/{id}")
+	public ResponseEntity<Optional<User>> getById(@PathVariable Long id) {
+		Optional<User> user = service.getById(id);
+		return ResponseEntity.status(HttpStatus.OK).body(user);
 	}
 	
 	@PostMapping

@@ -22,6 +22,10 @@ public class UserService {
 		return repository.findAll();
 	}
 	
+	public Optional<User> getById(Long id) {
+		return repository.findById(id);
+	}
+	
 	public User postUser(User obj) {
 		return repository.save(obj);
 	}
