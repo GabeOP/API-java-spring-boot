@@ -8,8 +8,6 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-import jakarta.persistence.Temporal;
-import jakarta.persistence.TemporalType;
 
 @Entity
 @Table(name="tb_user")
@@ -22,7 +20,6 @@ public class User {
 	private String name;
 	private String state;
 	
-	@Temporal(TemporalType.TIMESTAMP)
 	private Date created_at;
 	
 	public User() {}
