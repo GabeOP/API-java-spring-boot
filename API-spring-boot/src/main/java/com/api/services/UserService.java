@@ -20,4 +20,8 @@ public class UserService {
 	public List<User> getAll(){
 		return repository.findAll();
 	}
+	
+	public User postUser(User obj) {
+		return repository.save(obj);
+	}
 }
