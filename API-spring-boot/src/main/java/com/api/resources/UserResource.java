@@ -1,7 +1,6 @@
 package com.api.resources;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -15,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.api.dto.UserDTO;
 import com.api.entities.User;
 import com.api.services.UserService;
 
@@ -35,8 +35,8 @@ public class UserResource {
 	}
 	
 	@GetMapping("/{id}")
-	public ResponseEntity<Optional<User>> getById(@PathVariable Long id) {
-		Optional<User> user = service.getById(id);
+	public ResponseEntity<UserDTO> getById(@PathVariable Long id) {
+		UserDTO user = service.getById(id);
 		return ResponseEntity.status(HttpStatus.OK).body(user);
 	}
 	
