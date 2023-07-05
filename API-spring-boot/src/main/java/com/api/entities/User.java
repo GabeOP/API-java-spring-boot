@@ -1,6 +1,5 @@
 package com.api.entities;
 
-import java.sql.Date;
 import java.util.Objects;
 
 import jakarta.persistence.Entity;
@@ -18,11 +17,14 @@ public class User {
 	private Long id;
 	
 	private String name;
-	private String state;
-	
-	private Date created_at;
+	private String password;
 	
 	public User() {}
+	
+	public User(String name, String password) {
+		this.name = name;
+		this.password = password;
+	}
 
 	public String getName() {
 		return name;
@@ -32,20 +34,16 @@ public class User {
 		this.name = name;
 	}
 
-	public String getState() {
-		return state;
+	public String getPassword() {
+		return password;
 	}
 
-	public void setState(String state) {
-		this.state = state;
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 	public Long getId() {
 		return id;
-	}
-
-	public Date getCreated_at() {
-		return created_at;
 	}
 
 	@Override

@@ -34,15 +34,9 @@ public class UserService {
 		Optional<User> entity = repository.findById(id);
 		var userModel = entity.get();
 		
-		UpdatedData(userModel, obj);
-		
 		return repository.save(userModel);
 	}
-	
-	public void UpdatedData(User entity, User obj) {
-		entity.setName(obj.getName());
-		entity.setState(obj.getState());
-	}
+
 	
 	public void deleteUser(Long id) {
 		repository.deleteById(id);
