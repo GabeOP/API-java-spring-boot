@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.api.dto.UserDTO;
+import com.api.dto.UserDtoComSenha;
 import com.api.entities.User;
 import com.api.services.UserService;
 
@@ -36,14 +37,23 @@ public class UserResource {
 	
 	@GetMapping("/{id}")
 	public ResponseEntity<UserDTO> getById(@PathVariable Long id) {
-		UserDTO user = service.getById(id);
-		return ResponseEntity.status(HttpStatus.OK).body(user);
+		User user = service.getById(id);
+		UserDTO dto = new UserDTO(user);
+		return ResponseEntity.status(HttpStatus.OK).body(dto);
+	}
+	
+	@GetMapping("/senha/{id}")
+	public ResponseEntity<UserDtoComSenha> getByIdComSenha(@PathVariable Long id) {
+		User user = service.getById(id);
+		UserDtoComSenha dto = new UserDtoComSenha(user);
+		return ResponseEntity.status(HttpStatus.OK).body(dto);
 	}
 	
 	@PostMapping
-	public ResponseEntity<User> postUser(@RequestBody User obj) {
+	public ResponseEntity<UserDTO> postUser(@RequestBody User obj) {
 		service.postUser(obj);
-		return ResponseEntity.status(HttpStatus.CREATED).body(obj);
+		UserDTO dto = new UserDTO(obj);
+		return ResponseEntity.status(HttpStatus.CREATED).body(dto);
 	}
 	
 	@PutMapping("/{id}")
