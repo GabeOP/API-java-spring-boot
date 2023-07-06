@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.api.dto.UserDTO;
+import com.api.dto.response.UserCompleto;
+import com.api.dto.response.UserResumo;
 import com.api.entities.User;
 import com.api.services.UserService;
 
@@ -35,9 +37,17 @@ public class UserResource {
 	}
 	
 	@GetMapping("/{id}")
-	public ResponseEntity<UserDTO> getById(@PathVariable Long id) {
+	public ResponseEntity<UserResumo> getByIdResumo(@PathVariable Long id) {
 		UserDTO dto = service.getById(id);
-		return ResponseEntity.status(HttpStatus.OK).body(dto);
+		UserResumo userResumo = new UserResumo(dto.getId(), dto.getName());
+		return ResponseEntity.status(HttpStatus.OK).body(userResumo);
+	}
+	
+	@GetMapping("/{id}/detalhes")
+	public ResponseEntity<UserCompleto> getByIdDetalhes(@PathVariable Long id) {
+		UserDTO dto = service.getById(id);
+		UserCompleto userCompleto = new UserCompleto(dto.getId(), dto.getName(), dto.getPassword());
+		return ResponseEntity.status(HttpStatus.OK).body(userCompleto);
 	}
 
 	@PostMapping

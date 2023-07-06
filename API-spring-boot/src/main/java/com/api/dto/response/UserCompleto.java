@@ -1,26 +1,18 @@
-package com.api.dto;
+package com.api.dto.response;
 
-import com.api.entities.User;
-
-public class UserDTO {
+public class UserCompleto {
 	private Long id;
 	private String name;
 	private String password;
 	
-	public UserDTO() {}
+	public UserCompleto() {}
 	
-	public UserDTO(Long id, String name, String password) {
+	public UserCompleto(Long id, String name, String password) {
 		this.id = id;
 		this.name = name;
 		this.password = password;
 	}
-	
-	public UserDTO(User user) {
-		id = user.getId();
-		name = user.getName();
-		password = user.getPassword();
-	}
-	
+
 	public Long getId() {
 		return id;
 	}
@@ -44,7 +36,6 @@ public class UserDTO {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-
 	
 	
 }
