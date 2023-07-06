@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
+import com.api.dto.UserDTO;
 import com.api.entities.User;
 import com.api.repositories.UserRepository;
 
@@ -22,9 +23,10 @@ public class UserService {
 		return repository.findAll();
 	}
 	
-	public User getById(Long id) {
+	public UserDTO getById(Long id) {
 		User entity = repository.findById(id).get();
-		return entity;
+		UserDTO dto = new UserDTO(entity);
+		return dto;
 	}
 	
 	public User postUser(User obj) {

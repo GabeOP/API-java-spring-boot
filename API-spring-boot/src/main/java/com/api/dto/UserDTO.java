@@ -14,9 +14,9 @@ public class UserDTO {
 	}
 	
 	public UserDTO(User user) {
-		id = user.getId();
 		name = user.getName();
 	}
+	
 
 	public Long getId() {
 		return id;
@@ -33,6 +33,7 @@ public class UserDTO {
 	public void setName(String name) {
 		this.name = name;
 	}
+
 	
 	
 }
